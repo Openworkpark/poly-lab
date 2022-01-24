@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Dialogs } from '@nativescript/core';
 import { RouteProp } from '@react-navigation/core';
 import { FrameNavigationProp } from "react-nativescript-navigation";
 import { MainStackParamList } from "./NavigationParamList";
 import { StyleSheet } from "react-nativescript";
 import { EventData } from '@nativescript/core';
+import { openUrl } from '@nativescript/core/utils';
 
 
 // type SecondaryScreenProps = {
@@ -61,24 +61,17 @@ export class Second extends Component<{}, any>{
                 currentImage: 0
             });
         }
-        return this.currentImage;
+        return this.state.currentImage;
     }
     gotowhatsapp(btargs) {
         var textField = btargs.object;
         const name = textField.page.getViewById("name").text;
         const age = textField.page.getViewById("age").text;
         const test = textField.page.getViewById("test").text;
-
-        // var url = "https://wa.me/916376355499?text="
-        //     + "name: " + name + "age" + age + "test" + test ;
-
-        // window.open(url, '_blank').focus();
-        var utilityModule = require("utils/utils");
-        utilityModule.openUrl("https://www.thepolyglotdeveloper.com");
+        openUrl("https://wa.me/916376355499?text=" + "Name: " + name + "\nAge: " + age + "\nTest Name: " + test);
         console.log(name);
         console.log(age);
         console.log(test);
-        Dialogs.alert("Details submitted!")
     }
 
     componentDidMount() {
@@ -105,11 +98,11 @@ export class Second extends Component<{}, any>{
                 stretch="fill"
             />
             <label margin='5' style={styles.form}>Name</label>
-            <textField text={this.state.text} hint="Nishant" color="black" backgroundColor="white" borderWidth='1' borderColor='black' margin='10'  id='name' />
+            <textField text={this.state.text} hint="Enter your name" color="black" backgroundColor="white" borderWidth='1' borderColor='black' margin='10'  id='name' />
             <label margin='5' style={styles.form}>Age</label>
-            <textField hint="24" color="black" backgroundColor="white" borderWidth='1' borderColor='black' margin='10' id='age' />
+            <textField hint="Enter your age" color="black" backgroundColor="white" borderWidth='1' borderColor='black' margin='10' id='age' />
             <label margin='5' style={styles.form}>Test Name</label>
-            <textField hint="HB" color="black" backgroundColor="white" borderWidth='1' borderColor='black' margin='10' id='test' />
+            <textField hint="Test name" color="black" backgroundColor="white" borderWidth='1' borderColor='black' margin='10' id='test' />
             <button backgroundColor="#FFF951" fontSize='20' onTap={this.gotowhatsapp}>
                 Submit
             </button>
