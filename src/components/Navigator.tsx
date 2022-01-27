@@ -2,7 +2,6 @@ import * as React from "react";
 import { BaseNavigationContainer } from '@react-navigation/core';
 import { stackNavigatorFactory } from "react-nativescript-navigation";
 import { HomeScreen } from "./HomeScreen";
-import { SecondaryScreen } from "./SecondaryScreen";
 import {Second} from "./Second";
 
 const StackNavigator = stackNavigatorFactory();
