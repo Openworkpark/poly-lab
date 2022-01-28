@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { StyleSheet } from "react-nativescript";
+import { registerElement, StyleSheet } from "react-nativescript";
 import { EventData } from '@nativescript/core';
 import { openUrl } from '@nativescript/core/utils';
-import { Carousel } from 'nativescript-carousel';
+import { Carousel, CarouselItem } from 'nativescript-carousel';
 import { isNumber } from '@nativescript/core/utils/types';
 React.createElement('Carousel', () => require('nativescript-carousel').Carousel);
 React.createElement('CarouselItem', () => require('nativescript-carousel').CarouselItem)
+registerElement('Carousel', () => require('nativescript-carousel').Carousel);
+registerElement('CarouselItem', () => require('nativescript-carousel').CarouselItem);
 
 
 // type SecondaryScreenProps = {
@@ -55,7 +57,7 @@ export class Second extends Component<{}, any>{
     gotowhatsapp(btargs) {
         var textField = btargs.object;
         var alertValidation1 = '';
-        var hasNumber = /\d/; 
+        var hasNumber = /\d/;
         var name = textField.page.getViewById("name").text;
         var age = textField.page.getViewById("age").text;
         var testname = textField.page.getViewById("test").text;
@@ -66,7 +68,7 @@ export class Second extends Component<{}, any>{
         } else if (hasNumber.test(name)) {
             alertValidation1 += 'please enter valid details';
             alert(alertValidation1 + '\n');
-        }else if (hasNumber.test(testname)) {
+        } else if (hasNumber.test(testname)) {
             alertValidation1 += 'please enter valid details';
             alert(alertValidation1 + '\n');
         } else {
@@ -83,7 +85,7 @@ export class Second extends Component<{}, any>{
 
     render() {
         return <>
-            <absoluteLayout id='main_section' backgroundColor="#FFF951" height="80" marginTop="48">
+            <absoluteLayout id='main_section' backgroundColor="#FFF951" height="80">
                 <image height="80" width="130"
                     src=" ~/./images/demologo.jpg"
                     stretch="fill"
