@@ -14,7 +14,12 @@ registerElement('CarouselItem', () => require('nativescript-carousel').CarouselI
 //     route: RouteProp<MainStackParamList, "Secondary">,
 //     navigation: FrameNavigationProp<MainStackParamList, "Secondary">,
 // }
-
+var checkdata1;
+var checkdata2;
+var checkdata3;
+var border1 = "black";
+var border2 = "black";
+var border3 = "black";
 const styles = StyleSheet.create({
     text: {
         fontWeight: 'bold',
@@ -22,6 +27,11 @@ const styles = StyleSheet.create({
         color: "black",
     },
     form: {
+        fontSize: 24,
+        color: "black",
+    },
+    textfield: {
+        borderWidth: '1',
         fontSize: 24,
         color: "black",
     },
@@ -56,22 +66,36 @@ export class Second extends Component<{}, any>{
     }
     gotowhatsapp(btargs) {
         var textField = btargs.object;
-        var alertValidation1 = '';
         var hasNumber = /\d/;
         var name = textField.page.getViewById("name").text;
         var age = textField.page.getViewById("age").text;
         var testname = textField.page.getViewById("test").text;
 
-        if (name == '' || age == '' || testname == '') {
-            alertValidation1 += 'please fill all the details';
-            alert(alertValidation1 + '\n');
-        } else if (hasNumber.test(name)) {
-            alertValidation1 += 'please enter valid details';
-            alert(alertValidation1 + '\n');
-        } else if (hasNumber.test(testname)) {
-            alertValidation1 += 'please enter valid details';
-            alert(alertValidation1 + '\n');
+        if (name == '' || hasNumber.test(name)) {
+            border1 = "red";
+            checkdata1 = false;
         } else {
+            border1 = "black";
+            checkdata1 = true;
+        }
+
+        if (age == '') {
+            border2 = "red";
+            checkdata2 = false;
+        } else {
+            border2 = "black";
+            checkdata2 = true;
+        }
+
+        if (testname == '' || hasNumber.test(testname)) {
+            border3 = "red";
+            checkdata3 = false;
+        } else {
+            border3 = "black";
+            checkdata3 = true;
+        }
+
+        if (checkdata1 == true && checkdata2 == true && checkdata3 == true) {
             openUrl("https://wa.me/916376355499?text=" + "Name: " + name + "\nAge: " + age + "\nTest Name: " + testname);
         }
         console.log(name);
@@ -85,32 +109,30 @@ export class Second extends Component<{}, any>{
 
     render() {
         return <>
-            <absoluteLayout id='main_section' backgroundColor="#FFF951" height="80">
-                <image height="80" width="130"
+            <gridLayout backgroundColor="#FFF951" height="20%" width="100%">
+                <image horizontalAlignment="left" verticalAlignment="bottom" height="80" width="130"
                     src=" ~/./images/demologo.jpg"
                     stretch="fill"
                 />
-                <label
-                    left="130"
-                    top="20"
+                <label horizontalAlignment="center" verticalAlignment="middle"
                     style={styles.text}
                 >
                     Dr. PC LAB
                 </label>
-            </absoluteLayout>
-            <image height="250" width="130" top="100"
-                src={this.state.images[this.state.currentImage]}
-                stretch="fill"
-            />
-            <label margin='5' style={styles.form}>Name</label>
-            <textField hint="Enter your name" color="black" backgroundColor="white" borderWidth='1' borderColor='black' margin='10' id='name' />
-            <label margin='5' style={styles.form}>Age</label>
-            <textField hint="Enter your age" color="black" backgroundColor="white" borderWidth='1' borderColor='black' margin='10' id='age' keyboardType='number' maxLength='2' />
-            <label margin='5' style={styles.form}>Test Name</label>
-            <textField hint="Test name" color="black" backgroundColor="white" borderWidth='1' borderColor='black' margin='10' id='test' />
-            <button backgroundColor="#FFF951" fontSize='20' onTap={this.gotowhatsapp}>
-                Submit
-            </button>
+            </gridLayout>
+            <flexboxLayout flexDirection="column" height="100%" width="100%" justifyContent="space-between">
+                <image height="250" width="130" verticalAlignment='top'
+                    src={this.state.images[this.state.currentImage]}
+                    stretch="fill"
+                />
+                <label margin='5' style={styles.form}>Name</label>
+                <textField style={styles.textfield} hint="Enter your name" color="black" borderColor={border1} backgroundColor="white" margin='10' id='name' />
+                <label margin='5' style={styles.form}>Age</label>
+                <textField style={styles.textfield} hint="Enter your age" color="black" borderColor={border2} backgroundColor="white" margin='10' id='age' keyboardType='number' maxLength='2' />
+                <label margin='5' style={styles.form}>Test Name</label>
+                <textField style={styles.textfield} hint="Test name" color="black" borderColor={border3} backgroundColor="white" margin='10' id='test' />
+                <label marginBottom="20" backgroundColor="#FFF951" fontSize='20' color="black" fontWeight='bold' width="120" textAlignment='center' alignSelf="center" onTap={this.gotowhatsapp}>Submit</label>
+            </flexboxLayout >
         </>;
     }
 }

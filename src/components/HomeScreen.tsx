@@ -12,10 +12,10 @@ type HomeScreenProps = {
 
 export function HomeScreen({ navigation }: HomeScreenProps) {
     return (
-        <stackLayout backgroundColor="#FFF951" height="100%" width="100%" paddingTop="200">
-            <image  height="350" width="350"src=" ~/./images/demologo.jpg" stretch="aspectFill" horizontalAlignment="center" />
-            <label paddingTop="170" style={styles.button} horizontalAlignment="center"  className="fas" onTap={() => navigation.navigate('Secondary')}>Continue &#xf0a9; </label>
-        </stackLayout>
+        <gridLayout backgroundColor="#FFF951" height="100%" width="100%" >
+            <image horizontalAlignment="center" verticalAlignment="middle" height="350" width="350" src=" ~/./images/demologo.jpg" stretch="aspectFill" />
+            <label paddingBottom="20" horizontalAlignment="center" verticalAlignment="bottom" style={styles.button} className="fas" onTap={() => navigation.navigate('Secondary')}>Continue &#xf0a9; </label>
+        </gridLayout>
     );
 }
 
