@@ -131,7 +131,7 @@ export class Second extends Component<{}, any>{
                 <textField style={styles.textfield} hint="Enter your age" color="black" borderColor={border2} backgroundColor="white" margin='10' id='age' keyboardType='number' maxLength='2' />
                 <label margin='5' style={styles.form}>Test Name</label>
                 <textField style={styles.textfield} hint="Test name" color="black" borderColor={border3} backgroundColor="white" margin='10' id='test' />
-                <label marginBottom="20" backgroundColor="#FFF951" fontSize='20' color="black" fontWeight='bold' width="120" textAlignment='center' alignSelf="center" onTap={this.gotowhatsapp}>Submit</label>
+                <label marginBottom="20" padding="10" backgroundColor="#FFF951" fontSize='20' color="black" fontWeight='bold' width="150" textAlignment='center' alignSelf="center" onTap={this.gotowhatsapp}>Submit</label>
             </flexboxLayout >
         </>;
     }
