@@ -96,7 +96,7 @@ export class Second extends Component<{}, any>{
         }
 
         if (checkdata1 == true && checkdata2 == true && checkdata3 == true) {
-            openUrl("https://wa.me/916376355499?text=" + "Name: " + name + "\nAge: " + age + "\nTest Name: " + testname);
+            openUrl("https://wa.me/919729657404?text=" + "Name: " + name + "\nAge: " + age + "\nTest Name: " + testname);
         }
         console.log(name);
         console.log(age);
